@@ -70,10 +70,7 @@ XS_CONFIG      ?= MinimalConfig
 XS_EMU_THREADS ?= 2
 TARGET_XS_EMU  := $(DIR_XS)/build/emu
 
-.PHONY: xs-init xs-emu xs-emu-clean
-
-xs-init:
-	$(XS_ENV) $(MAKE) -C $(DIR_XS) init
+.PHONY: xs-emu xs-emu-clean
 
 xs-emu: $(TARGET_XS_EMU)
 
@@ -143,13 +140,15 @@ $(TARGET_BBL_NEMU):
 
 .PHONY: init run-qemu run-nemu nodiff difftest clean
 
-init: xs-init
-	git submodule update --init --depth 1   $(DIR_QEMU)
-	git submodule update --init             $(DIR_NEMU)
-	git submodule update --init             $(DIR_BBL_QEMU)
-	git submodule update --init             $(DIR_BBL_NEMU)
-	git submodule update --init --depth 1   $(DIR_LINUX)
-	git submodule update --init             $(DIR_ROOTFS)
+init:
+	git submodule update --init --depth 1 $(DIR_QEMU)
+	git submodule update --init           $(DIR_NEMU)
+	git submodule update --init           $(DIR_XS)
+	git submodule update --init           $(DIR_BBL_QEMU)
+	git submodule update --init           $(DIR_BBL_NEMU)
+	git submodule update --init --depth 1 $(DIR_LINUX)
+	git submodule update --init           $(DIR_ROOTFS)
+	$(MAKE) -C $(DIR_XS) init
 
 run-qemu: $(TARGET_QEMU) $(TARGET_IMG) $(TARGET_BBL_QEMU)
 	$(TARGET_QEMU) -M virt -m 1G -bios none -kernel $(TARGET_BBL_QEMU) \
