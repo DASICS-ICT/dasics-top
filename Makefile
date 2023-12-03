@@ -150,6 +150,7 @@ $(TARGET_BBL_NEMU):
 .PHONY: init run-qemu run-nemu nodiff difftest clean
 
 init:
+	git pull origin xs-dasics-v1.0-release
 	git submodule update --init --depth 1 $(DIR_QEMU)
 	git submodule update --init           $(DIR_NEMU)
 	git submodule update --init           $(DIR_XS)
