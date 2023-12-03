@@ -29,7 +29,7 @@ make run-qemu
 ~~~
 
 * Run one DASICS test on NEMU:
-    * Note: Due to the limitation of NEMU, you can only run one test at one time. If you want to run another test, please modify `riscv-rootfs/rootfsimg/initramfs-dasics-2.txt`
+    * Note: Due to the limitation of NEMU, you can only run one test at one time. If you want to run another test, please modify `riscv-rootfs/rootfsimg/initramfs-emu.txt`
 
 ~~~bash
 make run-nemu
