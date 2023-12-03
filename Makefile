@@ -51,14 +51,23 @@ TARGET_NEMU_SO  := $(TARGET_NEMU_ELF)-so
 nemu: $(TARGET_NEMU_ELF) $(TARGET_NEMU_SO)
 
 nemu-clean:
-	$(NEMU_ENV) $(MAKE) -C $(DIR_SOFTFLOAT) clean && $(NEMU_ENV) $(MAKE) -C $(DIR_NEMU) clean
+ifneq ($(wildcard $(DIR_SOFTFLOAT)),)
+	$(NEMU_ENV) $(MAKE) -C $(DIR_SOFTFLOAT) clean
+endif
+	$(NEMU_ENV) $(MAKE) -C $(DIR_NEMU) clean
 
 $(TARGET_NEMU_ELF):
-	$(NEMU_ENV) $(MAKE) -C $(DIR_SOFTFLOAT) clean && $(NEMU_ENV) $(MAKE) -C $(DIR_NEMU) riscv64-xs-dasics_defconfig
+ifneq ($(wildcard $(DIR_SOFTFLOAT)),)
+	$(NEMU_ENV) $(MAKE) -C $(DIR_SOFTFLOAT) clean
+endif
+	$(NEMU_ENV) $(MAKE) -C $(DIR_NEMU) riscv64-xs-dasics_defconfig
 	$(NEMU_ENV) $(MAKE) -C $(DIR_NEMU) -j`nproc`
 
 $(TARGET_NEMU_SO):
-	$(NEMU_ENV) $(MAKE) -C $(DIR_SOFTFLOAT) clean && $(NEMU_ENV) $(MAKE) -C $(DIR_NEMU) riscv64-xs-dasics-ref_defconfig
+ifneq ($(wildcard $(DIR_SOFTFLOAT)),)
+	$(NEMU_ENV) $(MAKE) -C $(DIR_SOFTFLOAT) clean
+endif
+	$(NEMU_ENV) $(MAKE) -C $(DIR_NEMU) riscv64-xs-dasics-ref_defconfig
 	$(NEMU_ENV) $(MAKE) -C $(DIR_NEMU) -j`nproc`
 
 # ---------------------------------------------
