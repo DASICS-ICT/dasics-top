@@ -27,7 +27,7 @@ TARGET_IMG  := $(DIR_QEMU)/build/img
 qemu: $(TARGET_QEMU)
 
 qemu-clean:
-	$(MAKE) -C $(DIR_QEMU) clean
+	-$(MAKE) -C $(DIR_QEMU) clean
 
 $(TARGET_QEMU):
 	cd $(DIR_QEMU) && ./configure --target-list=riscv64-softmmu
