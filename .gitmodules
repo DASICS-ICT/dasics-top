@@ -1,0 +1,28 @@
+[submodule "QEMU-DASICS"]
+	path = QEMU-DASICS
+	url = https://github.com/DASICS-ICT/QEMU-DASICS.git
+	branch = xs-dasics-qemu-8.1.0
+[submodule "riscv-linux"]
+	path = riscv-linux
+	url = https://github.com/DASICS-ICT/riscv-linux.git
+	branch = xs-dasics-linux
+[submodule "riscv-rootfs"]
+	path = riscv-rootfs
+	url = https://github.com/DASICS-ICT/riscv-rootfs.git
+	branch = xs-dasics-linux
+[submodule "NEMU"]
+	path = NEMU
+	url = https://github.com/DASICS-ICT/NEMU.git
+	branch = xs-dasics-v1.0-release
+[submodule "riscv-pk-qemu"]
+	path = riscv-pk-qemu
+	url = https://github.com/DASICS-ICT/riscv-pk.git
+	branch = dasics-qemu-8.1.0
+[submodule "riscv-pk-nemu"]
+	path = riscv-pk-nemu
+	url = https://github.com/DASICS-ICT/riscv-pk.git
+	branch = dev-xsdasics-linux
+[submodule "xiangshan-dasics"]
+	path = xiangshan-dasics
+	url = https://github.com/DASICS-ICT/xiangshan-dasics.git
+	branch = xs-dasics-v1.0-release
