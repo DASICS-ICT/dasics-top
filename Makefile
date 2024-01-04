@@ -22,7 +22,7 @@ endif
 TARGET_QEMU := $(DIR_QEMU)/build/qemu-system-riscv64
 TARGET_IMG  := $(DIR_QEMU)/build/img
 
-.PHONY: qemu
+.PHONY: qemu qemu-clean
 
 qemu: $(TARGET_QEMU)
 
